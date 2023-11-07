@@ -21,24 +21,30 @@ def inserir(dicionario):
 
 #função 03: salvando cada usuário no arquivo txt e verificando se há usuários duplicados pelo login (info única de cada usuário)
 def salvar(dicionario):
-        #abrindo arquivo no modo read para ler cada linha como um registro da lista 
+         #abrindo arquivo no modo read para ler cada linha como um registro da lista 
         with open('manager_users.txt', 'r') as leitura:
                 conteudo = leitura.readlines()
                 usuarios_existentes = [linha.split(':')[0] for linha in conteudo] #extraindo apenas o login do usuário
-        print(usuarios_existentes)
+
         #para cada chave e valor será verificado se há login duplicado
+        novo_usuario = False #variável para controle se é um novo usuário ou não
         for chave, valor in dicionario.items():
                     if chave in usuarios_existentes:
+                        pass #se for usuário já existente, comando não fará nada
+                    else:
+                        novo_usuario = True #se for novo usuário, muda a variável para True
+
+        #condição caso seja novo usuário ou não                
+        if novo_usuario == False:
                         print('\n====== ATENÇÃO! ======\n' +
                                 'Usuário já cadastrado!')
                         
-                        
-                    else:
-                        with open('manager_users.txt', 'a') as arquivo:
+        else:
+                        with open('manager_users.txt', 'a') as arquivo:#abre o arquivo somente uma vez para evitar comportamentos inesperados no script
                             arquivo.write(chave + ':' + str(valor) + '\n')
                             print('\n====== CADASTRO REALIZADO! ======\n' +
-                                  f'O usuário {chave} foi cadastrado com sucesso!') 
-                            break
+                                f'O usuário {chave} foi cadastrado com sucesso!') 
+             
 
     
 #função 04:  pesquisando usuários dentro dos registros do arquivo gerado
