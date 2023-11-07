@@ -14,7 +14,7 @@ def perguntar():
 
 #função 02: inserindo os dados informado pelo usuário no dicionário de lista, onde a chave é o login do usuário e as demais informações preenchem a lista.
 def inserir(dicionario):
-    dicionario[input('\nDigite o login: ').upper()] = [input('Digite o nome: ').upper(),
+    dicionario[input('Digite o login: ').upper()] = [input('\nDigite o nome: ').upper(),
                                                    input('Digite a última data de acesso: '),
                                                    input('Qual a última estação acessada: ').upper()]
 
@@ -25,20 +25,20 @@ def salvar(dicionario):
         with open('manager_users.txt', 'r') as leitura:
                 conteudo = leitura.readlines()
                 usuarios_existentes = [linha.split(':')[0] for linha in conteudo] #extraindo apenas o login do usuário
-        
-        #abrindo arquivo no modo append:
-        with open('manager_users.txt', 'a') as arquivo:
-            #para cada chave e valor será verificado se há login duplicado
-            for chave, valor in dicionario.items():
+        print(usuarios_existentes)
+        #para cada chave e valor será verificado se há login duplicado
+        for chave, valor in dicionario.items():
                     if chave in usuarios_existentes:
                         print('\n====== ATENÇÃO! ======\n' +
                                 'Usuário já cadastrado!')
-                        break
+                        
+                        
                     else:
-                        arquivo.write(chave + ':' + str(valor) + '\n')
-                        print('\n====== CADASTRO REALIZADO! ======\n' +
-                              f'O usuário {chave} foi cadastrado com sucesso!') 
-                        break  
+                        with open('manager_users.txt', 'a') as arquivo:
+                            arquivo.write(chave + ':' + str(valor) + '\n')
+                            print('\n====== CADASTRO REALIZADO! ======\n' +
+                                  f'O usuário {chave} foi cadastrado com sucesso!') 
+                            break
 
     
 #função 04:  pesquisando usuários dentro dos registros do arquivo gerado
