@@ -21,14 +21,15 @@ def inserir(dicionario):
 
 #função 03: salvando cada usuário no arquivo txt e verificando se há usuários duplicados pelo login (info única de cada usuário)
 def salvar(dicionario):
-    #abrindo arquivo no modo append:
-    with open('manager_users.txt', 'a') as arquivo:
         #abrindo arquivo no modo read para ler cada linha como um registro da lista 
         with open('manager_users.txt', 'r') as leitura:
                 conteudo = leitura.readlines()
                 usuarios_existentes = [linha.split(':')[0] for linha in conteudo] #extraindo apenas o login do usuário
-        #para cada chave e valor será verificado se há login duplicado
-        for chave, valor in dicionario.items():
+        
+        #abrindo arquivo no modo append:
+        with open('manager_users.txt', 'a') as arquivo:
+            #para cada chave e valor será verificado se há login duplicado
+            for chave, valor in dicionario.items():
                     if chave in usuarios_existentes:
                         print('\n====== ATENÇÃO! ======\n' +
                                 'Usuário já cadastrado!')
