@@ -4,7 +4,7 @@ usuarios = {}
 op = perguntar()
 
 while op != "S":
-        if op in ["I", "P", "E", "L", "A"]:
+        if op in ["I", "P", "E", "L", "T"]:
             #condição para Inserir (funções inserir e salvar registros)
             if op == "I":
                 inserir(usuarios) 
@@ -23,9 +23,9 @@ while op != "S":
             elif op == "L":
                 listar()
             
-
-            elif op == 'A':
-                excluir_arq()
+            #condição para Excluir todos os registros do arquivo
+            elif op == "T":
+                limpar_arq()
 
         #Se o usuário não digitar uma opção válida, cai no loop infinito até digitar "S"
         else:

@@ -8,13 +8,13 @@ def perguntar():
             '<P> - Para PESQUISAR um usuário\n' +
             '<E> - Para EXCLUIR um usuário\n' +
             '<L> - Para LISTAR todos os usuários\n' +
-            '<A> - Para EXCLUIR ARQUIVO com todos os usuários\n' +
+            '<T> - Para EXCLUIR TODOS os usuários registrados\n' +
             '<S> - Para SAIR do programa:  ').upper()
 
 
 #função 02: inserindo os dados informado pelo usuário no dicionário de lista, onde a chave é o login do usuário e as demais informações preenchem a lista.
 def inserir(dicionario):
-    dicionario[input('Digite o login: ').upper()] = [input('Digite o nome: ').upper(),
+    dicionario[input('\nDigite o login: ').upper()] = [input('Digite o nome: ').upper(),
                                                    input('Digite a última data de acesso: '),
                                                    input('Qual a última estação acessada: ').upper()]
 
@@ -120,23 +120,25 @@ def listar ():
                     print(item, end='\n')
 
          
-#função 07: excluindo arquivo com os registros dos usuários
-def excluir_arq ():
-    import os #importando a biblioteca OS para interagir com o arquivo 
+#função 07: limpar os registros do arquivo de usuários
+def limpar_arq ():
     
     #confirmando a ação pelo usuário:
     conf_acao = input('\n====== ATENÇÃO! ======\n' +
-                       'Deseja excluir o arquivo que contém todo os registros de usuários: (SIM/NÃO)').upper().strip()
+                       'Deseja excluir todos os registros de usuários: (SIM/NÃO)').upper().strip()
     
     #em caso afirmativo:
     if conf_acao in ['S', 'SIM', 'SIM!', 'Y', 'YES', 'YES!']: 
-          os.remove('manager_users.txt')
+          with open ('manager_users.txt', 'w') as arquivo:
+               pass #todo conteúdo do arquivo será substituído por vazio
+          
           print('\n====== OPERAÇÃO CONCLUÍDA COM SUCESSO ======\n' + 
-             'O arquivo foi excluído!')
+             'Os registros do arquivo foram excluídos!')
+          
     #em caso negativo:
     elif conf_acao in ['N', 'NÃO', 'NÃO!', 'NOT', 'NOT!']:
          print('\n====== OPERAÇÃO CANCELADA COM SUCESSO ======\n' + 
-             'O arquivo não foi excluído!')
+             'Os registros do arquivo não foram excluídos!')
     #em caso de erro: volta ao menu principal
     else:
          print('\n====== ATENÇÃO ======\n' + 
