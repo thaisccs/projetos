@@ -113,17 +113,22 @@ def listar ():
         #lista com cada linha do arquivo no modo read:
         conteudo = arquivo.readlines()
 
-        user = 1 #variável de contagem de users
-        for valor in conteudo:
-            print('\n-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=')
-            print(f'\nUsuário: {user}')
-            user += 1 
-            print(f'LOGIN: {valor.split(":")[0]}\n') #usando split() para delimitar a str e extrair apenas o login
-            print('OUTRAS INFORMAÇÕES: (nome, data último acesso e última estação acessada)')
-            dados = ast.literal_eval(valor.split(':')[1]) #ast.literal_eval() retorna a str de lista como uma lista de str
+        #verificando se há usuários para serem listados:
+        if len(conteudo) < 1:
+            print('\n====== ATENÇÃO ======\n' + 
+                  'Não há usuários para serem listados!')
+        else:
+            user = 1 #variável de contagem de users
+            for valor in conteudo:
+                print('\n-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=')
+                print(f'\nUsuário: {user}')
+                user += 1 
+                print(f'LOGIN: {valor.split(":")[0]}\n') #usando split() para delimitar a str e extrair apenas o login
+                print('OUTRAS INFORMAÇÕES: (nome, data último acesso e última estação acessada)')
+                dados = ast.literal_eval(valor.split(':')[1]) #ast.literal_eval() retorna a str de lista como uma lista de str
 
-            for item in dados: #loop para percorrer a lista 'dados'
-                    print(item, end='\n')
+                for item in dados: #loop para percorrer a lista 'dados'
+                        print(item, end='\n')
 
          
 #função 07: limpar os registros do arquivo de usuários

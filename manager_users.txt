@@ -1,4 +1,0 @@
-T.SOZUA:['THAIS SOUZA', 'data1', 'BASE1']
-M.ANDRADE:['MICHEL ANDRADE', 'data2', 'BASE2']
-T.SOUZA:['THAIS SOUZA', 'data1', 'BASE1']
-A.LIMA:['ANA LIMA', 'data2', 'BASE2']
