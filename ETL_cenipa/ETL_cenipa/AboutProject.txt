@@ -1,0 +1,5 @@
+Projeto ETL Cenipa
+
+Projeto iniciado durante o bootcamp da Soulcode de Análise de dados.
+
+Análise dos dados sobre acidentes aéreos até 2022 fornecido pelo Cenipa, identificando inconsistências na base de dados, lugares com maior ocorrência e os padrões desses acidentes.
